@@ -1,11 +1,3 @@
-//
-//  Messages.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 18/04/16.
-//
-//
-
 import Foundation
 
 public struct CentrifugeClientMessage {
@@ -52,15 +44,20 @@ public struct CentrifugeCredentials {
 
 public struct CentrifugeConfig {
     let url: String
-    let secret: String
-    let authEndpoint: String
-    let authHeaders: [String:String]?
+    var authRequest: URLRequest?
     
-    public init(url: String, secret: String, authEndpoint: String = "/centrifuge/auth/", authHeaders: [String:String]? = nil) {
+    public init(url: String, authRequest: URLRequest?) {
         self.url = url
-        self.secret = secret
-        self.authEndpoint = authEndpoint
-        self.authHeaders = authHeaders
+        self.authRequest = authRequest        
+    }
+    
+    public init(url: String) {
+        self.url = url
+        self.authRequest = nil
+    }
+    
+    mutating func setRequest(request: URLRequest) {
+        self.authRequest = request
     }
 }
 

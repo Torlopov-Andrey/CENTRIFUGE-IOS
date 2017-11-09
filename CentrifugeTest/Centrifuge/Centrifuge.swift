@@ -1,11 +1,3 @@
-//
-//  Centrifugal.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 18/04/16.
-//
-//
-
 import IDZSwiftCommonCrypto
 
 public let CentrifugeAuthErrorDomain = "com.Centrifuge.error.domain.auth"
@@ -25,7 +17,7 @@ public class Centrifuge {
     
     @available(*, deprecated, message: "Use method with CentrifugeConfig instead")
     public class func client(url: String, secret: String, creds: CentrifugeCredentials, delegate: CentrifugeClientDelegate) -> CentrifugeClient {
-        let conf = CentrifugeConfig(url: url, secret: secret)
+        let conf = CentrifugeConfig(url: url)
         
         return client(conf: conf, creds: creds, delegate: delegate)
     }

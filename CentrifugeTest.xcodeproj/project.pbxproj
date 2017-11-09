@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3379CD85A8253038FFE56B73 /* Pods_CentrifugeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A47E18DCEA4D2AA368CE2D9 /* Pods_CentrifugeTest.framework */; };
 		A42D4E881FAC948200877BD1 /* Centrifuge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E831FAC948200877BD1 /* Centrifuge.swift */; };
 		A42D4E891FAC948200877BD1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E841FAC948200877BD1 /* Protocols.swift */; };
-		A42D4E8A1FAC948200877BD1 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E851FAC948200877BD1 /* WebSocket.swift */; };
 		A42D4E8B1FAC948200877BD1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E861FAC948200877BD1 /* Models.swift */; };
 		A42D4E8C1FAC948200877BD1 /* CentrifugeClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E871FAC948200877BD1 /* CentrifugeClientImpl.swift */; };
 		A42D4E8F1FAC948A00877BD1 /* CentrifugoServerMessageParserImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E8D1FAC948A00877BD1 /* CentrifugoServerMessageParserImpl.swift */; };
 		A42D4E901FAC948A00877BD1 /* CentrifugeClientMessageBuilderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D4E8E1FAC948A00877BD1 /* CentrifugeClientMessageBuilderImpl.swift */; };
+		A44C76651FB43E1F0001CC55 /* Pods_CentrifugeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44C76671FB43E1F0001CC55 /* Pods_CentrifugeTest.framework */; };
+		A44C76691FB43EDD0001CC55 /* WebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C76681FB43EDD0001CC55 /* WebSocketClient.swift */; };
+		A44C766C1FB43EE90001CC55 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C766B1FB43EE90001CC55 /* WebSocket.swift */; };
+		A44C76721FB43F6B0001CC55 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A44C76711FB43F6B0001CC55 /* libz.tbd */; };
+		A44C76731FB43F790001CC55 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A44C766D1FB43F390001CC55 /* libstdc++.tbd */; };
 		A4A202071FA9AE36001F0D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A202061FA9AE36001F0D9C /* AppDelegate.swift */; };
 		A4A202091FA9AE36001F0D9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A202081FA9AE36001F0D9C /* ViewController.swift */; };
 		A4A2020C1FA9AE36001F0D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A2020A1FA9AE36001F0D9C /* Main.storyboard */; };
@@ -27,11 +30,20 @@
 		6A47E18DCEA4D2AA368CE2D9 /* Pods_CentrifugeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CentrifugeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42D4E831FAC948200877BD1 /* Centrifuge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Centrifuge.swift; path = Centrifuge/Centrifuge.swift; sourceTree = "<group>"; };
 		A42D4E841FAC948200877BD1 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Centrifuge/Protocols.swift; sourceTree = "<group>"; };
-		A42D4E851FAC948200877BD1 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Centrifuge/WebSocket.swift; sourceTree = "<group>"; };
 		A42D4E861FAC948200877BD1 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Models.swift; path = Centrifuge/Models.swift; sourceTree = "<group>"; };
 		A42D4E871FAC948200877BD1 /* CentrifugeClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CentrifugeClientImpl.swift; path = Centrifuge/CentrifugeClientImpl.swift; sourceTree = "<group>"; };
 		A42D4E8D1FAC948A00877BD1 /* CentrifugoServerMessageParserImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CentrifugoServerMessageParserImpl.swift; path = Centrifuge/Builder/CentrifugoServerMessageParserImpl.swift; sourceTree = "<group>"; };
 		A42D4E8E1FAC948A00877BD1 /* CentrifugeClientMessageBuilderImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CentrifugeClientMessageBuilderImpl.swift; path = Centrifuge/Builder/CentrifugeClientMessageBuilderImpl.swift; sourceTree = "<group>"; };
+		A44C76611FB43DDD0001CC55 /* Pods_CentrifugeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CentrifugeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44C76631FB43E0E0001CC55 /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDZSwiftCommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44C76661FB43E1F0001CC55 /* IDZSwiftCommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDZSwiftCommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44C76671FB43E1F0001CC55 /* Pods_CentrifugeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CentrifugeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44C76681FB43EDD0001CC55 /* WebSocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocketClient.swift; path = Centrifuge/WebSocketClient.swift; sourceTree = "<group>"; };
+		A44C766A1FB43EE90001CC55 /* SwiftWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftWebSocket.h; path = WebSocket/SwiftWebSocket.h; sourceTree = "<group>"; };
+		A44C766B1FB43EE90001CC55 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = WebSocket/WebSocket.swift; sourceTree = "<group>"; };
+		A44C766D1FB43F390001CC55 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		A44C766F1FB43F410001CC55 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		A44C76711FB43F6B0001CC55 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A4A202031FA9AE36001F0D9C /* CentrifugeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CentrifugeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A202061FA9AE36001F0D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4A202081FA9AE36001F0D9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3379CD85A8253038FFE56B73 /* Pods_CentrifugeTest.framework in Frameworks */,
+				A44C76731FB43F790001CC55 /* libstdc++.tbd in Frameworks */,
+				A44C76721FB43F6B0001CC55 /* libz.tbd in Frameworks */,
+				A44C76651FB43E1F0001CC55 /* Pods_CentrifugeTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +86,7 @@
 				A42D4E871FAC948200877BD1 /* CentrifugeClientImpl.swift */,
 				A42D4E861FAC948200877BD1 /* Models.swift */,
 				A42D4E841FAC948200877BD1 /* Protocols.swift */,
-				A42D4E851FAC948200877BD1 /* WebSocket.swift */,
+				A44C76681FB43EDD0001CC55 /* WebSocketClient.swift */,
 				A42D4E821FAC8F0100877BD1 /* Builder */,
 			);
 			name = Centrifuge;
@@ -85,6 +99,43 @@
 				A42D4E8D1FAC948A00877BD1 /* CentrifugoServerMessageParserImpl.swift */,
 			);
 			name = Builder;
+			sourceTree = "<group>";
+		};
+		A44C76491FB339500001CC55 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A4A202061FA9AE36001F0D9C /* AppDelegate.swift */,
+				A4A2020F1FA9AE36001F0D9C /* LaunchScreen.storyboard */,
+				A4A202121FA9AE36001F0D9C /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		A44C764A1FB339590001CC55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4A2020A1FA9AE36001F0D9C /* Main.storyboard */,
+				A4A2020D1FA9AE36001F0D9C /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A44C764B1FB339600001CC55 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A4A2022D1FA9B836001F0D9C /* TableViewDataSource.swift */,
+				A4A202081FA9AE36001F0D9C /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A44C765B1FB43CB00001CC55 /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A44C766A1FB43EE90001CC55 /* SwiftWebSocket.h */,
+				A44C766B1FB43EE90001CC55 /* WebSocket.swift */,
+			);
+			name = WebSocket;
 			sourceTree = "<group>";
 		};
 		A4A201FA1FA9AE36001F0D9C = {
@@ -108,14 +159,11 @@
 		A4A202051FA9AE36001F0D9C /* CentrifugeTest */ = {
 			isa = PBXGroup;
 			children = (
+				A44C765B1FB43CB00001CC55 /* WebSocket */,
 				A42D4E491FAC5C0900877BD1 /* Centrifuge */,
-				A4A2022D1FA9B836001F0D9C /* TableViewDataSource.swift */,
-				A4A202061FA9AE36001F0D9C /* AppDelegate.swift */,
-				A4A202081FA9AE36001F0D9C /* ViewController.swift */,
-				A4A2020A1FA9AE36001F0D9C /* Main.storyboard */,
-				A4A2020D1FA9AE36001F0D9C /* Assets.xcassets */,
-				A4A2020F1FA9AE36001F0D9C /* LaunchScreen.storyboard */,
-				A4A202121FA9AE36001F0D9C /* Info.plist */,
+				A44C764B1FB339600001CC55 /* Controller */,
+				A44C76491FB339500001CC55 /* Application */,
+				A44C764A1FB339590001CC55 /* Resources */,
 			);
 			path = CentrifugeTest;
 			sourceTree = "<group>";
@@ -123,6 +171,13 @@
 		CBC8FD038754A9B647C84BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A44C76711FB43F6B0001CC55 /* libz.tbd */,
+				A44C766F1FB43F410001CC55 /* libstdc++.6.0.9.tbd */,
+				A44C766D1FB43F390001CC55 /* libstdc++.tbd */,
+				A44C76661FB43E1F0001CC55 /* IDZSwiftCommonCrypto.framework */,
+				A44C76671FB43E1F0001CC55 /* Pods_CentrifugeTest.framework */,
+				A44C76631FB43E0E0001CC55 /* IDZSwiftCommonCrypto.framework */,
+				A44C76611FB43DDD0001CC55 /* Pods_CentrifugeTest.framework */,
 				6A47E18DCEA4D2AA368CE2D9 /* Pods_CentrifugeTest.framework */,
 			);
 			name = Frameworks;
@@ -240,12 +295,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CentrifugeTest/Pods-CentrifugeTest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IDZSwiftCommonCrypto/IDZSwiftCommonCrypto.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftWebSocket/SwiftWebSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDZSwiftCommonCrypto.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -259,9 +312,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44C76691FB43EDD0001CC55 /* WebSocketClient.swift in Sources */,
 				A42D4E901FAC948A00877BD1 /* CentrifugeClientMessageBuilderImpl.swift in Sources */,
 				A42D4E891FAC948200877BD1 /* Protocols.swift in Sources */,
-				A42D4E8A1FAC948200877BD1 /* WebSocket.swift in Sources */,
+				A44C766C1FB43EE90001CC55 /* WebSocket.swift in Sources */,
 				A42D4E8C1FAC948200877BD1 /* CentrifugeClientImpl.swift in Sources */,
 				A4A2022E1FA9B836001F0D9C /* TableViewDataSource.swift in Sources */,
 				A4A202091FA9AE36001F0D9C /* ViewController.swift in Sources */,
@@ -348,6 +402,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -397,6 +452,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

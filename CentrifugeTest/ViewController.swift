@@ -3,63 +3,30 @@ import UIKit
 typealias MessagesCallback = (CentrifugeServerMessage) -> Void
 
 class ViewController: UIViewController {
-    @IBOutlet weak var nickTextField: UITextField!
-    @IBOutlet weak var messageTextField: UITextField!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tokenTextField: UITextField!
-    @IBOutlet weak var signToken: UITextField!
-    @IBOutlet weak var timeStamp: UITextField!
-    @IBOutlet weak var clientId: UITextField!
-    
-    let datasource = TableViewDataSource()
-    
-    var nickName: String {
-        get {
-            guard let nick = self.nickTextField.text, nick.characters.count > 0 else { return "anonymous" }
-            return nick
-        }
-    }
-    
-    //MARK:- Interactions with server
-    
     var client: CentrifugeClient!
-    
     let channel = "$user:private#065a0d37-c57a-48f6-8ead-f0f33ea97c34"
     let user = "065a0d37-c57a-48f6-8ead-f0f33ea97c34"
-    var token: String = "4e8c3282460dc9e447fafaf5495c2435cf462e351bec25a6ec96f8fd228e3431"
-    var timestamp: String = "1509700515"
-        
-    var sign: String {
-        get {
-            guard let sign = self.signToken.text else { return "" }
-            return sign
-        }
-    }
+    
+    let timestamp: String = "1510223303"
+    let token: String = "c521698f9f4cdefc6d445d9d304fa305682f2e7474b77f3de0e16208be815233"
+    var authUrl: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = datasource
-        
-        let creds = CentrifugeCredentials(token: self.token, user: user, timestamp: self.timestamp)
-        
         let url = "wss://test.cubux.net:8085/connection/websocket"
-//        let conf = CentrifugeConfig(url: url, secret: "")
-        let conf = CentrifugeConfig(url: url, secret: "secred", authEndpoint: "/centrifugo/auth", authHeaders:[:])
+        self.authUrl = URL(string: "https://test.cubux.net/centrifugo/auth")!
+        let creds = CentrifugeCredentials(token: self.token, user: user, timestamp: self.timestamp)
+
+        let conf = CentrifugeConfig(url: url)
         self.client = Centrifuge.client(conf: conf, creds: creds, delegate: self)
     }
 
     func publish(_ text: String) {
-        client.publish(toChannel: channel, data:  ["nick" : nickName, "input" : text]) { message, error in
-            print("publish message: \(String(describing: message))")
-        }
+        debugPrint("no realisation: publish message...")
     }
     
-    //MARK: Presentation
-    func addItem(_ title: String, subtitle: String) {
-        self.datasource.addItem(TableViewItem(title: title, subtitle: subtitle))
-        self.tableView.reloadData()
-    }
+    //MARK:- Presentation
     
     func showAlert(_ title: String, message: String) {
         let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -87,10 +54,11 @@ class ViewController: UIViewController {
             debugPrint("showResponse, msg: \(msg)")
             if let body = msg.body,
                 let c = body["client"] as? String {
-                self.clientId.text = c
+                let headers = ["Content-type": "application/json; charset=UTF-8", "User-Agent": "Cubux:ios", "Authorization": "Bearer e109dddb5bc6f976d78cc6d7a947e6b5e83f7b31"]
+                
+                self.client.setAuthRequest(request: self.getAuthRequest(clientId: c, headers: headers))
             }
             showMessage(msg)
-            
             debugPrint("******************************")
         }
         else if let err = error {
@@ -101,13 +69,20 @@ class ViewController: UIViewController {
         }
     }
     
-    //MARK:- Interactions with user
-    
-    @IBAction func sendButtonDidPress(_ sender: AnyObject) {
-        if let text = messageTextField.text, text.characters.count > 0 {
-            messageTextField.text = ""
-            publish(text)
+    func getAuthRequest(clientId: String, headers: [String: String]) -> URLRequest {
+        var authRequest = URLRequest(url: self.authUrl)
+        authRequest.httpMethod = "POST"
+        
+        headers.forEach { (key:String, value: String) in
+            authRequest.setValue(value , forHTTPHeaderField: key)
         }
+        
+        let bodyDictionary: [String : Any] = ["channels":["$user:private#065a0d37-c57a-48f6-8ead-f0f33ea97c34"], "client":clientId]
+        
+        if let jsonData = try? JSONSerialization.data(withJSONObject: bodyDictionary, options: []) {
+            authRequest.httpBody = jsonData
+        }
+        return authRequest
     }
     
     @IBAction func actionButtonDidPress() {
@@ -134,9 +109,7 @@ class ViewController: UIViewController {
         alert.addAction(ping)
         
         let subscribe = UIAlertAction(title: "Subscribe to \(channel)", style: .default) { _ in
-//            self.client.subscribe(toChannel: <#T##String#>, delegate: <#T##CentrifugeChannelDelegate#>, lastMessageUID: <#T##String#>, completion: <#T##CentrifugeMessageHandler##CentrifugeMessageHandler##(CentrifugeServerMessage?, NSError?) -> Void#>)
-            
-//            subscribe(toChannel: self.channel, delegate: self, additionalParams:["client":self.clientId.text!,"info":"","sign":self.sign], completion: self.showResponse)
+            self.client.subscribe(toChannel: self.channel, delegate: self, completion: self.showResponse)
         }
         alert.addAction(subscribe)
         
@@ -159,53 +132,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
-    
-    func getSign(authToken: String, clientId: String, completion: (String)->()) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        guard let url = URL(string: "https://test.cubux.net/centrifugo/auth") else {return}
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        let bodyObject: [String : Any] = [
-            "channels": [
-                "$user:private#065a0d37-c57a-48f6-8ead-f0f33ea97c34"
-            ],
-            "client": clientId
-        ]
-        request.httpBody = try! JSONSerialization.data(withJSONObject: bodyObject, options: [])
-        
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if (error == nil) {
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                print("URL Session Task Succeeded: HTTP \(statusCode)")
-            }
-            else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
-            }
-        })
-        task.resume()
-        session.finishTasksAndInvalidate()
-    }
-    
-}
-
-//MARK: CentrifugeClientDelegate
-
 extension ViewController: CentrifugeClientDelegate {
-    
+
     func client(_ client: CentrifugeClient, didReceiveError error: NSError) {
         showError(error)
     }
     
     func client(_ client: CentrifugeClient, didDisconnect message: CentrifugeServerMessage) {
         print("didDisconnect message: \(message)")
-        datasource.removeAll()
-        tableView.reloadData()
     }
     
     func client(_ client: CentrifugeClient, didReceiveRefresh message: CentrifugeServerMessage) {
@@ -218,21 +152,15 @@ extension ViewController: CentrifugeClientDelegate {
 extension ViewController: CentrifugeChannelDelegate {
     
     func client(_ client: CentrifugeClient, didReceiveMessageInChannel channel: String, message: CentrifugeServerMessage) {
-        if let data = message.body?["data"] as? [String : AnyObject], let input = data["input"] as? String, let nick = data["nick"] as? String {
-            addItem(nick, subtitle: input)
-        }
+        debugPrint("message in channel: \(message)")
     }
     
     func client(_ client: CentrifugeClient, didReceiveJoinInChannel channel: String, message: CentrifugeServerMessage) {
-        if let data = message.body?["data"] as? [String : AnyObject], let user = data["user"] as? String {
-            addItem(message.method.rawValue, subtitle: user)
-        }
+        debugPrint("Join in channel: \(message)")
     }
     
     func client(_ client: CentrifugeClient, didReceiveLeaveInChannel channel: String, message: CentrifugeServerMessage) {
-        if let data = message.body?["data"] as? [String : AnyObject], let user = data["user"] as? String {
-            addItem(message.method.rawValue, subtitle: user)
-        }
+        debugPrint("leave channel: \(message)")
     }
     
     func client(_ client: CentrifugeClient, didReceiveUnsubscribeInChannel channel: String, message: CentrifugeServerMessage) {

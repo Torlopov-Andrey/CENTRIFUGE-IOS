@@ -1,13 +1,7 @@
-//
-//  Protocols.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 26/04/16.
-//
-//
 import Foundation
 
 public protocol CentrifugeClientDelegate: class {
+    
     func client(_ client: CentrifugeClient, didReceiveError error:NSError)
     func client(_ client: CentrifugeClient, didReceiveRefresh: CentrifugeServerMessage)
     func client(_ client: CentrifugeClient, didDisconnect: CentrifugeServerMessage)
@@ -22,6 +16,10 @@ public protocol CentrifugeChannelDelegate {
 
 public protocol CentrifugeClient {
     var clientId: String? { get }
+    
+    //MARK: Update config
+    func setAuthRequest(request: URLRequest)
+    
     //MARK: General methods
     func connect(withCompletion: @escaping CentrifugeMessageHandler)
     func disconnect()

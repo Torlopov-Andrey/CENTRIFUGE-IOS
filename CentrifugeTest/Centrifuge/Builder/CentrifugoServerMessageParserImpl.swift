@@ -1,10 +1,3 @@
-//
-//  CentrifugeServerMessageParserImpl.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 19/04/16.
-//
-//
 import Foundation
 
 protocol CentrifugeServerMessageParser {
@@ -31,7 +24,7 @@ class CentrifugeServerMessageParserImpl: CentrifugeServerMessageParser {
                 }
             }
         } catch {
-            print("Error: Json消息解析失败")
+            print("Error: Json")
         }
         return messages
     }

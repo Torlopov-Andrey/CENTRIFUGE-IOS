@@ -3,11 +3,7 @@ platform :ios, '10.0'
 
 target 'CentrifugeTest' do
   use_frameworks!
-#  pod "CentrifugeiOS"
 
-#    Centrifuge dependencies
-    pod 'SwiftWebSocket'
-    pod 'IDZSwiftCommonCrypto'
-#    ...
+pod 'IDZSwiftCommonCrypto', '~> 0.10.0'
 
 end

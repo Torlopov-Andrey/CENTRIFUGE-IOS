@@ -1,10 +1,3 @@
-//
-//  CentrifugeClientMessageBuilderImpl.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 18/04/16.
-//
-//
 import Foundation
 
 protocol CentrifugeClientMessageBuilder {

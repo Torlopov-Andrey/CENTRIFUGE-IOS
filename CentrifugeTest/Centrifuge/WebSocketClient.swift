@@ -1,12 +1,4 @@
-//
-//  WebSocket.swift
-//  Pods
-//
-//  Created by Herman Saprykin on 18/04/16.
-//
-//
-
-import SwiftWebSocket
+import Foundation
 
 class CentrifugeWebSocket: WebSocket {
     
